@@ -1,0 +1,31 @@
+# =============================================================================
+# Inverse-variance weighted meta-analysis of cohorts (METAL)
+# - Project: Genetic determinants of Lewy body pathology
+# - Version: METAL
+# - Last Updated: 16-SEP-2026
+#
+# Usage
+#   metal 01_METAL_meta-analysis.txt
+#   Output: META_casecontrol1.tbl (+ .tbl.info)
+# =============================================================================
+
+SCHEME STDERR
+AVERAGEFREQ ON
+MINMAXFREQ ON
+GENOMICCONTROL OFF
+
+MARKER SNP
+ALLELE effect_allele noneffect_allele
+FREQ EAF
+EFFECT beta
+STDERR se
+PVALUE Pvalue
+WEIGHT N
+
+PROCESS GP2_METAL.tab
+PROCESS NIHNBB_METAL.tab
+
+OUTFILE META_casecontrol.tbl
+ANALYZE HETEROGENEITY RANDOM
+
+QUIT
